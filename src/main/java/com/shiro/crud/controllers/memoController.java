@@ -2,6 +2,7 @@ package com.shiro.crud.controllers;
 
 import com.shiro.crud.entities.memo;
 import com.shiro.crud.services.memoRepository;
+import com.shiro.crud.services.memoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,15 +19,6 @@ import java.util.UUID;
 public class memoController {
 
     @Autowired
-    memoRepository mrepos;
+    memoService mservice;
 
-    @GetMapping("/{uid}")
-    public ResponseEntity<memo> getMemos(@PathVariable String uid){
-        Optional<memo> singleMemo = mrepos.findById(UUID.fromString(uid));
-        if(singleMemo.isPresent()){
-            return ResponseEntity.ok((memo) singleMemo.get());
-        }
-        return ResponseEntity.notFound().build();
-
-    }
 }

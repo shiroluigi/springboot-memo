@@ -10,11 +10,11 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "EMPLOYEE")
+@Table(name = "MEMO")
 public class memo {
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "ID")
     private UUID id;
     @Column(name = "TITLE")
     @NonNull
@@ -23,4 +23,8 @@ public class memo {
     private String data;
     @Column(name = "Date")
     private LocalDateTime date;
+
+    @ManyToOne
+    @JoinColumn(name = "emp_id", nullable = false)
+    private employee employee;
 }

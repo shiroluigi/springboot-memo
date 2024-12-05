@@ -3,7 +3,9 @@ package com.shiro.crud.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.UUID;
 
 @Entity
 @Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 @Table(name = "EMPLOYEE")
 public class employee {
     @Id
@@ -30,5 +34,8 @@ public class employee {
     @Column(name = "USERNAME")
     @NonNull
     private String username;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<memo> memos;
 
 }
