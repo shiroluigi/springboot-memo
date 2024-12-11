@@ -34,13 +34,13 @@ public class employeeController {
         return new ResponseEntity<>(empObj, HttpStatus.CREATED);
     }
     @PostMapping("/add-memo/{id}")
-    public ResponseEntity<employee> addMemo(@RequestBody memo reqMemo, @PathVariable UUID id) {
+    public ResponseEntity<memo> addMemo(@RequestBody memo reqMemo, @PathVariable UUID id) {
         memo res = es.addSingleMemo(id, reqMemo);
         if (res == null)
         {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>( res ,HttpStatus.CREATED);
     }
 
 

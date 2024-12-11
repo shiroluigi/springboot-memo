@@ -35,12 +35,10 @@ public class employeeService {
         if (requestedEmployee.isPresent()) {
             employee emp = requestedEmployee.get();
 
-            // Initialize the memos list if null
             if (emp.getMemos() == null) {
                 emp.setMemos(new ArrayList<>());
             }
 
-            // Create and save a new memo
             memo newMemo = new memo();
             newMemo.setTitle(singleMemo.getTitle());
             newMemo.setData(singleMemo.getData());
@@ -48,13 +46,12 @@ public class employeeService {
             newMemo.setEmployee(emp);
             memoRepository.save(newMemo);
 
-            // Add the new memo to the employee's list and save the employee
             emp.getMemos().add(newMemo);
             employeeRepository.save(emp);
 
             return newMemo;
         } else {
-            return null; // Or throw an exception for better error handling
+            return null;
         }
     }
 
