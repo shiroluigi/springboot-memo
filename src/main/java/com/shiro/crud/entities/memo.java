@@ -31,7 +31,7 @@ public class memo {
     private LocalDateTime date;
 
     @ManyToOne
-    @JoinColumn(name = "emp_id", nullable = false)
+    @JoinColumn(name = "employee", nullable = false)
     @JsonBackReference
     private employee employee;
 }

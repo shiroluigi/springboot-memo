@@ -28,4 +28,11 @@ public class memoController {
         List<memo> memos = mservice.getAll();
         return new ResponseEntity<>(memos, HttpStatus.FOUND);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<List<memo>> getMemoById(@PathVariable UUID id){
+        if (mservice.getByUserId(id) != null) {
+            return new ResponseEntity<>(mservice.getByUserId(id) , HttpStatus.FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }
