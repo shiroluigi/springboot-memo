@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,5 +21,10 @@ public class memoController {
 
     @Autowired
     memoService mservice;
+    memoRepository mrepo;
 
+    @GetMapping
+    public ResponseEntity<List<memo>> getAllMemos(){
+        return ResponseEntity.ok(mrepo.findAll());
+    }
 }
