@@ -20,8 +20,7 @@ import java.util.UUID;
 public class employeeController {
 
     @Autowired
-    public employeeService es;
-    public memoService ms;
+    private employeeService es;
 
     @GetMapping("/getall")
     public ResponseEntity<List<employee>> getEmployees() {

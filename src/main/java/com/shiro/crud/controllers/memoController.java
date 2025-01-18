@@ -21,7 +21,7 @@ import java.util.UUID;
 public class memoController {
 
     @Autowired
-    memoService mservice;
+    private memoService mservice;
 
     @GetMapping
     public ResponseEntity<List<memo>> getAllMemos(){
